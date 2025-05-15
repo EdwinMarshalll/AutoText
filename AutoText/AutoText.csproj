@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>keyboard.ico</ApplicationIcon>
+    <Title>AutoText</Title>
+    <Authors>Edwin Lozano</Authors>
+    <Description>Permite la escritura automatica en la ventana activa sobre el cursor de texto, puede dar un enter al final, esperar ciertos segundos antes de escribir despues de hacer click en el boton de 'Write'</Description>
+    <Copyright>Todos los derechos reservados </Copyright>
+    <PackageIcon>keyboard.png</PackageIcon>
+    <NeutralLanguage>en</NeutralLanguage>
+    <SignAssembly>False</SignAssembly>
+    <PackageProjectUrl>https://github.com/EdwinMarshalll/AutoText</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/EdwinMarshalll/AutoText</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="keyboard.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icons\keyboard.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
