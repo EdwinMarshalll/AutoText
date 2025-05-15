@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnEscribir = new Button();
             txtText = new TextBox();
-            checkBox1 = new CheckBox();
+            chkHidePass = new CheckBox();
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
             chkEnter = new CheckBox();
@@ -46,7 +46,7 @@
             btnEscribir.TabIndex = 0;
             btnEscribir.Text = "Write";
             btnEscribir.UseVisualStyleBackColor = true;
-            btnEscribir.Click += btnEscribir_Click;
+            btnEscribir.Click += BtnWrite_Click;
             // 
             // txtText
             // 
@@ -57,18 +57,18 @@
             txtText.TabIndex = 2;
             txtText.UseSystemPasswordChar = true;
             // 
-            // checkBox1
+            // chkHidePass
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Checked = true;
-            checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(12, 1);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(85, 19);
-            checkBox1.TabIndex = 3;
-            checkBox1.Text = "Hide/Show";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            chkHidePass.AutoSize = true;
+            chkHidePass.Checked = true;
+            chkHidePass.CheckState = CheckState.Checked;
+            chkHidePass.Location = new Point(12, 1);
+            chkHidePass.Name = "chkHidePass";
+            chkHidePass.Size = new Size(85, 19);
+            chkHidePass.TabIndex = 3;
+            chkHidePass.Text = "Hide/Show";
+            chkHidePass.UseVisualStyleBackColor = true;
+            chkHidePass.CheckedChanged += chkPasswordType_CheckedChanged;
             // 
             // label1
             // 
@@ -105,7 +105,7 @@
             Controls.Add(chkEnter);
             Controls.Add(numericUpDown1);
             Controls.Add(label1);
-            Controls.Add(checkBox1);
+            Controls.Add(chkHidePass);
             Controls.Add(txtText);
             Controls.Add(btnEscribir);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -120,7 +120,7 @@
 
         private Button btnEscribir;
         private TextBox txtText;
-        private CheckBox checkBox1;
+        private CheckBox chkHidePass;
         private Label label1;
         private NumericUpDown numericUpDown1;
         private CheckBox chkEnter;
