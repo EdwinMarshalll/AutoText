@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnEscribir = new Button();
-            txtText = new TextBox();
             chkHidePass = new CheckBox();
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
             chkEnter = new CheckBox();
+            txtCombo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -47,15 +47,6 @@
             btnEscribir.Text = "Write";
             btnEscribir.UseVisualStyleBackColor = true;
             btnEscribir.Click += BtnWrite_Click;
-            // 
-            // txtText
-            // 
-            txtText.Location = new Point(10, 20);
-            txtText.Name = "txtText";
-            txtText.PlaceholderText = "Yout Text";
-            txtText.Size = new Size(168, 23);
-            txtText.TabIndex = 2;
-            txtText.UseSystemPasswordChar = true;
             // 
             // chkHidePass
             // 
@@ -97,20 +88,30 @@
             chkEnter.Text = "Use enter";
             chkEnter.UseVisualStyleBackColor = true;
             // 
+            // txtCombo
+            // 
+            txtCombo.AllowDrop = true;
+            txtCombo.FormattingEnabled = true;
+            txtCombo.Location = new Point(10, 20);
+            txtCombo.Name = "txtCombo";
+            txtCombo.Size = new Size(168, 23);
+            txtCombo.TabIndex = 8;
+            txtCombo.KeyDown += txtCombo_KeyDown;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(187, 79);
+            Controls.Add(txtCombo);
             Controls.Add(chkEnter);
             Controls.Add(numericUpDown1);
             Controls.Add(label1);
             Controls.Add(chkHidePass);
-            Controls.Add(txtText);
             Controls.Add(btnEscribir);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "AutoText 1.0.2.0";
+            Text = "AutoText 1.0.3.0";
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -119,10 +120,10 @@
         #endregion
 
         private Button btnEscribir;
-        private TextBox txtText;
         private CheckBox chkHidePass;
         private Label label1;
         private NumericUpDown numericUpDown1;
         private CheckBox chkEnter;
+        private ComboBox txtCombo;
     }
 }
