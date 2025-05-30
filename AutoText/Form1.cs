@@ -42,7 +42,7 @@ public partial class Form1 : Form
         if (string.IsNullOrWhiteSpace(value) || txtCombo?.Items?.Contains(value) == true || values.ContainsValue(value)) return;
 
         var hideText = new string('*', value.Length);
-        var index = txtCombo?.Items?.Add(hideText) ?? null;
+        var index = txtCombo?.Items?.Add(chkHidePass.Checked ? hideText : value) ?? null;
         if (index == null) return;
 
         values.TryAdd(index.Value, value);
