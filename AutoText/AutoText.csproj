@@ -16,6 +16,7 @@
     <SignAssembly>False</SignAssembly>
     <PackageProjectUrl>https://github.com/EdwinMarshalll/AutoText</PackageProjectUrl>
     <RepositoryUrl>https://github.com/EdwinMarshalll/AutoText</RepositoryUrl>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
