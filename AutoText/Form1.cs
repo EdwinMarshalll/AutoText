@@ -1,3 +1,5 @@
+using AutoText.SystemTray;
+
 namespace AutoText;
 
 public partial class Form1 : Form
@@ -9,6 +11,8 @@ public partial class Form1 : Form
         InitializeComponent();
         this.TopMost = true;
         this.MaximizeBox = false;
+
+        SystemTrayLogic.Initialize(this);
     }
 
     private async void BtnWrite_Click(object sender, EventArgs e)
