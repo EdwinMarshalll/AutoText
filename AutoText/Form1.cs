@@ -4,7 +4,7 @@ namespace AutoText;
 
 public partial class Form1 : Form
 {
-    private readonly Dictionary<int, string> values = new();
+    private readonly Dictionary<int, string> values = [];
 
     public Form1()
     {
