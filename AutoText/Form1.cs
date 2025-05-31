@@ -11,9 +11,10 @@ public partial class Form1 : Form
         this.MaximizeBox = false;
     }
 
-    private void BtnWrite_Click(object sender, EventArgs e)
+    private async void BtnWrite_Click(object sender, EventArgs e)
     {
-        Task.Delay((int)numericUpDown1.Value * 1000).Wait();
+        await Task.Delay((int)numericUpDown1.Value * 1000);
+
         values.TryGetValue(txtCombo.SelectedIndex, out string? texto);
 
         if (string.IsNullOrEmpty(texto)) return;
@@ -46,7 +47,10 @@ public partial class Form1 : Form
         if (index == null) return;
 
         values.TryAdd(index.Value, value);
-        txtCombo?.Text = string.Empty;
+        if(txtCombo is not null)
+        {
+            txtCombo.Text = string.Empty;
+        }
 
         e.Handled = true;
         e.SuppressKeyPress = true;
