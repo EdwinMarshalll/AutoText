@@ -11,6 +11,7 @@ public partial class Form1 : Form
         InitializeComponent();
         this.TopMost = true;
         this.MaximizeBox = false;
+        SetMainLocation();
 
         SystemTrayLogic.Initialize(this);
     }
@@ -66,5 +67,15 @@ public partial class Form1 : Form
         {
             if (values.ContainsKey(i)) action?.Invoke(i, values.GetValueOrDefault(i));
         }
+    }
+
+    private void SetMainLocation()
+    {
+        if (Screen.PrimaryScreen == null) return;
+        var workingArea = Screen.PrimaryScreen.WorkingArea;
+        var x = workingArea.Right - this.Width - 25;
+        var y = workingArea.Bottom - this.Height - 25;
+        this.StartPosition = FormStartPosition.Manual;
+        this.Location = new Point(x, y);
     }
 }
