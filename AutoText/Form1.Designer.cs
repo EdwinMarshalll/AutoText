@@ -111,7 +111,7 @@
             Controls.Add(btnEscribir);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "AutoText 1.0.4.0";
+            Text = "AutoText 1.0.4.1";
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();

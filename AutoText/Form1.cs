@@ -28,6 +28,12 @@ public partial class Form1 : Form
             texto += "{ENTER}";
         }
 
+        var capsLocked = Control.IsKeyLocked(Keys.CapsLock);
+        if (capsLocked)
+        {
+            texto = "{CAPSLOCK}" + texto;
+        }
+
         SendKeys.SendWait(texto);
     }
 
