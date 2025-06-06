@@ -1,14 +1,19 @@
+using AutoText.SystemTray;
+
 namespace AutoText;
 
 public partial class Form1 : Form
 {
-    private readonly Dictionary<int, string> values = new();
+    private readonly Dictionary<int, string> values = [];
 
     public Form1()
     {
         InitializeComponent();
         this.TopMost = true;
         this.MaximizeBox = false;
+        SetMainLocation();
+
+        SystemTrayLogic.Initialize(this);
     }
 
     private async void BtnWrite_Click(object sender, EventArgs e)
@@ -21,6 +26,12 @@ public partial class Form1 : Form
         if (chkEnter.Checked)
         {
             texto += "{ENTER}";
+        }
+
+        var capsLocked = Control.IsKeyLocked(Keys.CapsLock);
+        if (capsLocked)
+        {
+            texto = "{CAPSLOCK}" + texto;
         }
 
         SendKeys.SendWait(texto);
@@ -62,5 +73,15 @@ public partial class Form1 : Form
         {
             if (values.ContainsKey(i)) action?.Invoke(i, values.GetValueOrDefault(i));
         }
+    }
+
+    private void SetMainLocation()
+    {
+        if (Screen.PrimaryScreen == null) return;
+        var workingArea = Screen.PrimaryScreen.WorkingArea;
+        var x = workingArea.Right - this.Width - 25;
+        var y = workingArea.Bottom - this.Height - 25;
+        this.StartPosition = FormStartPosition.Manual;
+        this.Location = new Point(x, y);
     }
 }
