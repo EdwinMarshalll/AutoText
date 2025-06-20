@@ -35,14 +35,15 @@
             numericUpDown1 = new NumericUpDown();
             chkEnter = new CheckBox();
             txtCombo = new ComboBox();
+            chkPasteMode = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // btnEscribir
             // 
-            btnEscribir.Location = new Point(117, 49);
+            btnEscribir.Location = new Point(140, 20);
             btnEscribir.Name = "btnEscribir";
-            btnEscribir.Size = new Size(61, 23);
+            btnEscribir.Size = new Size(74, 23);
             btnEscribir.TabIndex = 0;
             btnEscribir.Text = "Write";
             btnEscribir.UseVisualStyleBackColor = true;
@@ -64,7 +65,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 54);
+            label1.Location = new Point(12, 51);
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 4;
@@ -72,7 +73,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(75, 49);
+            numericUpDown1.Location = new Point(73, 49);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(36, 23);
             numericUpDown1.TabIndex = 5;
@@ -81,7 +82,7 @@
             // chkEnter
             // 
             chkEnter.AutoSize = true;
-            chkEnter.Location = new Point(103, 1);
+            chkEnter.Location = new Point(126, 1);
             chkEnter.Name = "chkEnter";
             chkEnter.Size = new Size(75, 19);
             chkEnter.TabIndex = 7;
@@ -94,15 +95,26 @@
             txtCombo.FormattingEnabled = true;
             txtCombo.Location = new Point(10, 20);
             txtCombo.Name = "txtCombo";
-            txtCombo.Size = new Size(168, 23);
+            txtCombo.Size = new Size(124, 23);
             txtCombo.TabIndex = 8;
             txtCombo.KeyDown += txtCombo_KeyDown;
+            // 
+            // chkPasteMode
+            // 
+            chkPasteMode.AutoSize = true;
+            chkPasteMode.Location = new Point(126, 53);
+            chkPasteMode.Name = "chkPasteMode";
+            chkPasteMode.Size = new Size(88, 19);
+            chkPasteMode.TabIndex = 9;
+            chkPasteMode.Text = "Paste mode";
+            chkPasteMode.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(187, 79);
+            ClientSize = new Size(221, 79);
+            Controls.Add(chkPasteMode);
             Controls.Add(txtCombo);
             Controls.Add(chkEnter);
             Controls.Add(numericUpDown1);
@@ -125,5 +137,6 @@
         private NumericUpDown numericUpDown1;
         private CheckBox chkEnter;
         private ComboBox txtCombo;
+        private CheckBox chkPasteMode;
     }
 }
