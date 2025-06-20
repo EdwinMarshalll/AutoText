@@ -23,18 +23,35 @@ public partial class Form1 : Form
         values.TryGetValue(txtCombo.SelectedIndex, out string? texto);
 
         if (string.IsNullOrEmpty(texto)) return;
-        if (chkEnter.Checked)
-        {
-            texto += "{ENTER}";
-        }
 
-        var capsLocked = Control.IsKeyLocked(Keys.CapsLock);
-        if (capsLocked)
+        if (chkPasteMode.Checked)
         {
-            texto = "{CAPSLOCK}" + texto;
+            // Modo pegar (Ctrl+V)
+            if (chkEnter.Checked)
+            {
+                texto += Environment.NewLine;
+            }
+            Clipboard.SetText(texto);
+            SendKeys.SendWait("^v");
         }
+        else
+        {
+            // Modo SendKeys tradicional
+            texto = EscapeSendKeys(texto);
 
-        SendKeys.SendWait(texto);
+            if (chkEnter.Checked)
+            {
+                texto += "{ENTER}";
+            }
+
+            var capsLocked = Control.IsKeyLocked(Keys.CapsLock);
+            if (capsLocked)
+            {
+                texto = "{CAPSLOCK}" + texto;
+            }
+
+            SendKeys.SendWait(texto);
+        }
     }
 
     private void chkPasswordType_CheckedChanged(object sender, EventArgs e)
@@ -83,5 +100,47 @@ public partial class Form1 : Form
         var y = workingArea.Bottom - this.Height - 25;
         this.StartPosition = FormStartPosition.Manual;
         this.Location = new Point(x, y);
+    }
+
+    /// <summary>
+    /// Escapes special characters in a string for use with the SendKeys method.
+    /// </summary>
+    /// <remarks>The method replaces special characters such as "+", "^", "%", "~", "(", ")", "{", "}", "[",
+    /// and "]"  with their escaped equivalents (e.g., "{+}", "{^}"). This ensures the string can be safely used  with
+    /// the SendKeys method without causing unintended behavior.</remarks>
+    /// <param name="text">The input string to be escaped. Can be null or empty.</param>
+    /// <returns>A string with special characters escaped for compatibility with the SendKeys method.  Returns an empty string if
+    /// the input is null or empty.</returns>
+    private static string EscapeSendKeys(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+
+        var sb = new System.Text.StringBuilder(text.Length * 2);
+        foreach (char c in text)
+        {
+            switch (c)
+            {
+                case '+':
+                case '^':
+                case '%':
+                case '~':
+                case '(':
+                case ')':
+                case '[':
+                case ']':
+                    sb.Append('{').Append(c).Append('}');
+                    break;
+                case '{':
+                    sb.Append("{{}");
+                    break;
+                case '}':
+                    sb.Append("{}}");
+                    break;
+                default:
+                    sb.Append(c);
+                    break;
+            }
+        }
+        return sb.ToString();
     }
 }
